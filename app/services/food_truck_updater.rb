@@ -1,9 +1,9 @@
 require "open-uri"
 
-class TruckUpdater
+class FoodTruckUpdater
   NUMBER_OF_HEADER_ROWS = 3
 
-  def self.trucks
+  def self.food_trucks
     food_trucks = []
     food_truck_table_html.xpath("//tr").each_with_index do |row, pos|
       next unless pos > NUMBER_OF_HEADER_ROWS

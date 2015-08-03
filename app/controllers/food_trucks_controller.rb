@@ -1,5 +1,5 @@
 class FoodTrucksController < ApplicationController
   def index
-    render json: TruckUpdater.trucks
+    render json: FoodTruckUpdater.food_trucks
   end
 end
