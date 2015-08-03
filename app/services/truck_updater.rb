@@ -25,11 +25,27 @@ class TruckUpdater
   end
 
   def self.add_truck(food_trucks, html_columns)
-    food_trucks << {
-      name: html_columns[1].children.children.to_s,
-      day: html_columns[2].children.first.to_s,
-      time: html_columns[3].children.first.to_s,
-      location: html_columns[4].children.last.to_s,
-    }
+    food_trucks << {}.tap do |food_truck|
+      set_name(food_truck, html_columns)
+      set_day(food_truck, html_columns)
+      set_time(food_truck, html_columns)
+      set_location(food_truck, html_columns)
+    end
+  end
+
+  def self.set_name(food_truck, html_columns)
+    food_truck[:name] = html_columns[1].children.children.to_s
+  end
+
+  def self.set_day(food_truck, html_columns)
+    food_truck[:day] = html_columns[2].children.first.to_s
+  end
+
+  def self.set_time(food_truck, html_columns)
+    food_truck[:time] = html_columns[3].children.first.to_s
+  end
+
+  def self.set_location(food_truck, html_columns)
+    food_truck[:location] = html_columns[4].children.last.to_s
   end
 end
