@@ -2,8 +2,11 @@ source 'https://rubygems.org'
 
 gem "nokogiri"
 
-group :development, :test do
+group :test do
   gem "webmock"
+end
+
+group :development, :test do
   gem "vcr"
   gem "rspec-rails"
 end
