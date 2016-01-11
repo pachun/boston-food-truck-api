@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "food_trucks#index"
   resources :food_trucks, only: [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
