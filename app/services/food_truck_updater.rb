@@ -30,6 +30,7 @@ class FoodTruckUpdater
       set_day(food_truck, html_columns)
       set_time(food_truck, html_columns)
       set_location(food_truck, html_columns)
+      food_truck[:coordinates] = CoordinateService.for_location(food_truck[:location])
     end
   end
 
