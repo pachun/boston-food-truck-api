@@ -16,6 +16,7 @@ class CoordinateService
       "Harrison Ave and East Concord St, by BMC" => "42.3364781,-71.0754173",
       "Charlestown Navy Yard at Baxter Road" => "42.3733756,-71.0549069",
       "Chinatown, Boylston St near Washington St" => "42.352304,-71.0635862",
+      "Innovation District, Seaport Blvd at Boston Wharf Rd" => "42.3494448,-71.0599241",
     }[location] || ""
   end
 end
