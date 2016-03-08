@@ -35,8 +35,8 @@ class FoodTruckUpdater
     food_trucks << {}.tap do |food_truck|
       set_name(food_truck, html_columns)
       set_day(food_truck, html_columns)
-      set_time(food_truck, html_columns)
       set_location(food_truck, html_columns)
+      food_truck[:time] = TimeService.for_time(time(html_columns))
       food_truck[:coordinates] = CoordinateService.for_location(food_truck[:location])
     end
   end
@@ -49,11 +49,21 @@ class FoodTruckUpdater
     food_truck[:day] = html_columns[2].children.first.to_s
   end
 
-  def self.set_time(food_truck, html_columns)
-    food_truck[:time] = html_columns[3].children.first.to_s
+  def self.time(html_columns)
+    html_columns[3].children.first.to_s
   end
 
   def self.set_location(food_truck, html_columns)
     food_truck[:location] = html_columns[4].children.last.to_s
+  end
+end
+
+class TimeService
+  def self.for_time(time_string)
+    if time_string == "Lunch"
+      "10am - 3pm"
+    elsif time_string == "Dinner"
+      "3pm - 11pm"
+    end
   end
 end
