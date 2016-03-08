@@ -42,7 +42,7 @@ class FoodTruckUpdater
   end
 
   def self.set_name(food_truck, html_columns)
-    food_truck[:name] = html_columns[1].children.children.to_s
+    food_truck[:name] = (html_columns[1].children.children.to_s).split("&amp;").join("&")
   end
 
   def self.set_day(food_truck, html_columns)
