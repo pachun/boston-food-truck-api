@@ -3,6 +3,15 @@ require "open-uri"
 class FoodTruckUpdater
   NUMBER_OF_HEADER_ROWS = 3
 
+  def self.todays_food_trucks
+    current_day_of_week = Time.now.strftime("%A")
+    food_trucks.select do |food_truck|
+      food_truck[:day] == current_day_of_week
+    end
+  end
+
+  private
+
   def self.food_trucks
     food_trucks = []
     food_truck_table_html.xpath("//tr").each_with_index do |row, pos|
@@ -12,8 +21,6 @@ class FoodTruckUpdater
     end
     food_trucks
   end
-
-  private
 
   def self.food_truck_page_html
     food_truck_page = open("http://www.cityofboston.gov/foodtrucks/schedule-app-min.asp")
