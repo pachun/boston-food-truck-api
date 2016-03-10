@@ -4,13 +4,17 @@ class FoodTruckUpdater
   NUMBER_OF_HEADER_ROWS = 3
 
   def self.todays_food_trucks
-    current_day_of_week = Time.now.strftime("%A")
+    current_day_of_week = day
     food_trucks.select do |food_truck|
       food_truck[:day] == current_day_of_week
     end
   end
 
   private
+
+  def self.day
+    (Time.now + Time.zone_offset("EDT")).strftime("%A")
+  end
 
   def self.food_trucks
     food_trucks = []
